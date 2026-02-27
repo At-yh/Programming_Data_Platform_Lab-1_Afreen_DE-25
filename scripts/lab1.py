@@ -68,3 +68,24 @@ summary_df = pd.DataFrame({
 })
 
 summary_df.to_csv("results/analytics_summary.csv", index=False)
+
+
+#  Top 10 most expensive products
+top_10_expensive = df.sort_values(by="price", ascending=False).head(10)  # this line sort by highest price first & Take first 10 rows
+
+
+# Top 10 most deviating prices
+average_price = df["price"].mean()
+df["price_deviation"] = abs(df["price"] - average_price)
+top_10_deviation = df.sort_values(by="price_deviation", ascending=False).head(10)
+
+# Save price analysis
+price_analysis_df = pd.concat(
+    [
+        top_10_expensive.assign(category="Top 10 Expensive"),
+        top_10_deviation.assign(category="Top 10 Deviation")
+    ]
+)
+
+price_analysis_df.to_csv("results/price_analysis.csv", index=False)
+
