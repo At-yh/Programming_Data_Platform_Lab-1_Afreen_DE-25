@@ -52,3 +52,19 @@ summary_df = pd.DataFrame(summary_data)
 
 # Export Summary file
 summary_df.to_csv("results/analytics_summary.csv", index=False)
+
+
+# Create Analytics Summary
+average_price = df["price"].mean()
+median_price = df["price"].median()
+total_products = len(df)
+missing_price_count = df["price"].isna().sum()
+
+summary_df = pd.DataFrame({
+    "average_price": [average_price],
+    "median_price": [median_price],
+    "total_products": [total_products],
+    "missing_price_count": [missing_price_count]
+})
+
+summary_df.to_csv("results/analytics_summary.csv", index=False)
