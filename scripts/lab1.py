@@ -36,26 +36,6 @@ print(df.info())
 df.to_csv("results/cleaned_products.csv", index=False)
 
 
-# # Analytics Summary (Calculate Summary Values)
-
-# average_price = df["price"].mean()    # calculates average 
-# median_price = df["price"].median()   # middle value
-# total_products = len(df)              # number of rows
-# missing_price = df["price"].isna().sum()   # counts missing values
-
-# summary_data = {
-#     "average_price": [average_price],
-#     "median_price": [median_price],
-#     "total_products": [total_products],
-#     "missing_price_count": [missing_price]
-# }
-
-# summary_df = pd.DataFrame(summary_data)
-
-# # Export Summary file
-# summary_df.to_csv("results/analytics_summary.csv", index=False)
-
-
 # Create Analytics Summary 
 average_price = df["price"].mean()
 median_price = df["price"].median()
